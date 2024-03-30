@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
 int Summa_cifr(int n, int glubina) {
-    if ((abs(n) < 10) || (n == 0)) {
+    if (abs(n) < 10) {
         std::cout << "Глубина рекурсии: " << glubina << std::endl;
         std::cout << "Вызов с аргументом " << abs(n) << ", возвращено значение " << n << std::endl;
         return abs(n);
@@ -23,13 +23,12 @@ int main() {
     int result;
     std::cout << "Введите число: " << std::endl;
     std::cin >> n;
-    
-  
-    if ((n != static_cast<int>(n) || (n == static_cast<double>(n)))         ) {
+
+    if (n == 0) {
         try {
-            throw std::exception("Введено не целое число или 0");
+            throw std::invalid_argument("Введен некорректный аргумент: 0");
         }
-        catch (const std::exception& ex) {
+        catch (const std::invalid_argument& ex) {
             std::cout << ex.what() << std::endl;
             exit(0);
         }
